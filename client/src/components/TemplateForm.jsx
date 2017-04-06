@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserKeys from './UserKeys'
 import { getUsers } from '../utils/api.js'
 
 class TemplateForm extends Component {
@@ -27,7 +28,7 @@ class TemplateForm extends Component {
           return hash
         }, {})
 
-        this.setState({ usersById, userKeys })
+        this.setState({ usersById, userKeys, selectedId: 1 })
       })
   }
 
@@ -49,10 +50,11 @@ class TemplateForm extends Component {
   }
 
   render() {
-    const { usersById, template } = this.state
+    const { usersById, userKeys, template } = this.state
 
     return (
       <form className="template-form" onSubmit={this.handleSubmit}>
+        {!!userKeys ? <UserKeys userKeys={userKeys} /> : null}
         <textarea value={template} onChange={this.handleTextAreaChange} />
         {!!usersById ? renderOptions(usersById, this.handleSelect) : null}
         <button type="submit">Submit</button>
