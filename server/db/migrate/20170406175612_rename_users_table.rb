@@ -1,0 +1,5 @@
+class RenameUsersTable < ActiveRecord::Migration[5.0]
+  def change
+    rename_table('users', 'patients')
+  end
+end
