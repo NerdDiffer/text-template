@@ -5,8 +5,8 @@ const client = Axios.create({
   timeout: 3000
 })
 
-const getUsers = () => {
-  return client.get('/users')
+const getPatients = () => {
+  return client.get('/patients')
     .then(res => {
       const { data } = res
       return data
@@ -14,8 +14,8 @@ const getUsers = () => {
     .catch(err => logError(err))
 }
 
-const getUser = userId => {
-  return client.get(`/users/${userId}`)
+const getPatient = patientId => {
+  return client.get(`/patients/${patientId}`)
     .then(res => {
       const { data } = res
       console.log(data)
@@ -23,8 +23,8 @@ const getUser = userId => {
     .catch(err => logError(err))
 }
 
-const createUser = params => {
-  return client.post('/users', { ...params })
+const createPatient = params => {
+  return client.post('/patients', { ...params })
     .then(res => {
       const { data } = res
       console.log(data)
@@ -32,7 +32,7 @@ const createUser = params => {
     .catch(err => logError(err))
 }
 
-export { getUsers, getUser, createUser }
+export { getPatients, getPatient, createPatient }
 
 // helpers
 function logError(e) {
